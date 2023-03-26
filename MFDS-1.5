@@ -1,0 +1,153 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "b92aeb2b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The input matrix A\n",
+      " [[1 6 9 2]\n",
+      " [5 8 8 8]\n",
+      " [3 8 9 9]\n",
+      " [5 0 9 2]]\n",
+      "\n",
+      "The input matrix B\n",
+      " [[0]\n",
+      " [9]\n",
+      " [7]\n",
+      " [6]]\n",
+      "\n",
+      "Matrix not is diagonally dominant\n",
+      "x:\n",
+      "array([[2.09506849e+125, 1.15089133e+035, 8.92070840e+029,\n",
+      "        1.68925492e+095],\n",
+      "       [2.34107289e+125, 1.28602979e+035, 9.96818419e+029,\n",
+      "        1.88760841e+095],\n",
+      "       [2.24547866e+125, 1.23351668e+035, 9.56114821e+029,\n",
+      "        1.81053072e+095],\n",
+      "       [1.70661514e+125, 9.37500892e+034, 7.26669134e+029,\n",
+      "        1.37604476e+095]])\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Q1.5 - Write a function that perform  Gauss Jacobi iterations. Generate a random 4 × 4 matrix A and generate a random b ∈ R^4\n",
+    "# Report the results of passing this matrix to function written in (i). Solve linear system Ax = b by using function in (ii). \n",
+    "# Generate a plot of ∥xk+1 − xk∥2 for first 100 iterations. Does it converge ? or Is it diverging? Specify your observation. \n",
+    "# Take a screenshot of plot and paste it in the assignment document.\n",
+    "\n",
+    "\n",
+    "\n",
+    "#import numpy\n",
+    "import numpy as np\n",
+    "from numpy import array,inf\n",
+    "from numpy.linalg import norm \n",
+    "from scipy.linalg import solve\n",
+    "\n",
+    "np.seterr(divide='ignore', invalid='ignore')\n",
+    "#generTING RANDOM MATRIX\n",
+    "A = np.random.randint(10, size=(4, 4)) \n",
+    "# Size of the Matrix is given in \n",
+    "print(\"The input matrix A\\n\",(A)) \n",
+    "\n",
+    "#AX = B (RHS)\n",
+    "B = np.random.randint(10, size=(4, 1)) \n",
+    "print(\"\\nThe input matrix B\\n\",(B)) \n",
+    "\n",
+    "\n",
+    "# Cheking diaglonally dominant\n",
+    "def DiagonallyDominant(x):\n",
+    "    abs_x = np.abs(x)\n",
+    "    if np.all( 2*np.diag(abs_x) >= np.sum(abs_x, axis=1)):\n",
+    "        print ('\\nMatrix is diagonally dominant')\n",
+    "    else:\n",
+    "        print ('\\nMatrix not is diagonally dominant')\n",
+    "    return\n",
+    "DiagonallyDominant(A)\n",
+    "\n",
+    "\n",
+    "from pprint import pprint\n",
+    "from numpy import array, zeros, diag, diagflat, dot\n",
+    "\n",
+    "def jacobi(a,b,n,x=None):                                                                                                                                                         \n",
+    "    if x is None:\n",
+    "        x = zeros(len(A[0]))\n",
+    "\n",
+    "    # Create a vector of the diagonal elements of A                                                                                                                                                                                                                                                                                                                \n",
+    "    Diagnol = diag(A)\n",
+    "    R = A - diagflat(Diagnol)\n",
+    "\n",
+    "    # Iterate for N times                                                                                                                                                                          \n",
+    "    for i in range(N):\n",
+    "        x = x.astype('float64')\n",
+    "        x = (b - dot(R,x)) / Diagnol\n",
+    "    return x\n",
+    "\n",
+    "N = 100\n",
+    "# initial solution depending on n(here n=3)\n",
+    "x = np.ones((4, 1), dtype = int)\n",
+    "\n",
+    "sol = jacobi(A,B,N,x)\n",
+    "\n",
+    "print (\"x:\")\n",
+    "pprint(sol)\n",
+    "\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "plt.plot(x)\n",
+    "plt.title(\"Graphical representaion\")\n",
+    "plt.show()\n",
+    "\n",
+    "\n",
+    "\n",
+    "#If the matrix is Diagnolly dominant then it will be converging or it will be diverging\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "81d9f1f4",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
